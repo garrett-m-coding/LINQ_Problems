@@ -20,9 +20,9 @@ namespace DatabaseFirstLINQ
             //ProblemThree();
             //ProblemFour();
             //ProblemFive();
-            ProblemSix();
-            //ProblemSeven();
-            //ProblemEight();
+            //ProblemSix();
+            ProblemSeven();
+            ProblemEight();
             //ProblemNine();
             //ProblemTen();
             //ProblemEleven();
@@ -111,7 +111,7 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that gets all of the users who registered AFTER 2016 and BEFORE 2018
             // Then print each user's email and registration date to the console.
-            Console.WriteLine("\n\n\n********* Problem six **********");
+            Console.WriteLine("\n\n\n********* Problem Six **********");
             Console.WriteLine("These are the Users who registered after 2016 and before 2018:");
             var users = _context.Users;
             var after2016Date = new DateTime(2016, 01, 01, 00, 00, 00);
@@ -130,6 +130,8 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that retreives all of the users who are assigned to the role of Customer.
             // Then print the users email and role name to the console.
+            Console.WriteLine("\n\n\n********* Problem Seven **********");
+            Console.WriteLine("These are the Users who are Customers:");
             var customerUsers = _context.UserRoles.Include(ur => ur.Role).Include(ur => ur.User).Where(ur => ur.Role.RoleName == "Customer");
             foreach (UserRole userRole in customerUsers)
             {
@@ -141,7 +143,14 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that retreives all of the products in the shopping cart of the user who has the email "afton@gmail.com".
             // Then print the product's name, price, and quantity to the console.
-
+            Console.WriteLine("\n\n\n********* Problem Eight **********");
+            var afton = _context.Users.Where(u => u.Id == 2);
+            Console.WriteLine($"These are User afton@gmail.com's products in shopping cart:");
+            var aftonShopCart = _context.ShoppingCarts.Include(u => u.User).Include(u => u.Product).Where(u => u.User.Email == "afton@gmail.com");
+            foreach (ShoppingCart product in aftonShopCart)
+            {
+                Console.WriteLine($"Product Name: {product.Product.Name}     Price: ${product.Product.Price}     Quantity: {product.Quantity}");
+            }
         }
 
         private void ProblemNine()
