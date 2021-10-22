@@ -27,13 +27,13 @@ namespace DatabaseFirstLINQ
             //ProblemTen();
             //ProblemEleven();
             //ProblemTwelve();
-            //ProblemThirteen();
-            //ProblemFourteen();
-            //ProblemFifteen();
-            //ProblemSixteen();
-            ProblemSeventeen();
-            ProblemEighteen();
-            //ProblemNineteen();
+            ////ProblemThirteen();
+            ////ProblemFourteen();
+            ////ProblemFifteen();
+            ////ProblemSixteen();
+            //ProblemSeventeen();
+            //ProblemEighteen();
+            ProblemNineteen();
             //ProblemTwenty();
         }
 
@@ -305,6 +305,7 @@ namespace DatabaseFirstLINQ
         {
             // Delete all of the product relationships to the user with the email "oda@gmail.com" in the ShoppingCart table using LINQ.
             // HINT: Loop
+            Console.WriteLine("\n\n\n********* Problem Nineteen **********\n Deleted all of the products in Oda's shopping cart.");
             var shoppingCartProducts = _context.ShoppingCarts.Where(sc => sc.User.Email == "oda@gmail.com");
             foreach (ShoppingCart userProductRelationship in shoppingCartProducts)
             {
