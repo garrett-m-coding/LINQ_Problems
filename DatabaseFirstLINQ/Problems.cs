@@ -29,8 +29,8 @@ namespace DatabaseFirstLINQ
             //ProblemTwelve();
             //ProblemThirteen();
             //ProblemFourteen();
-            //ProblemFifteen();
-            ProblemSixteen();
+            ProblemFifteen();
+            //ProblemSixteen();
             //ProblemSeventeen();
             //ProblemEighteen();
             //ProblemNineteen();
@@ -255,6 +255,7 @@ namespace DatabaseFirstLINQ
 
         private void ProblemFifteen()
         {
+            Console.WriteLine("\n\n\n********* Problem Fifteen **********\n Updated User David's email to mike@gmail.com.");
             // Update the email of the user we created to "mike@gmail.com"
             var user = _context.Users.Where(u => u.Email == "david@gmail.com").SingleOrDefault();
             user.Email = "mike@gmail.com";
