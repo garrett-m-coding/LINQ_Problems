@@ -24,7 +24,7 @@ namespace DatabaseFirstLINQ
             //ProblemSeven();
             //ProblemEight();
             ProblemNine();
-            //ProblemTen();
+            ProblemTen();
             //ProblemEleven();
             //ProblemTwelve();
             //ProblemThirteen();
@@ -167,7 +167,32 @@ namespace DatabaseFirstLINQ
         {
             // Write a LINQ query that retreives all of the products in the shopping cart of users who have the role of "Employee".
             // Then print the user's email as well as the product's name, price, and quantity to the console.
+            Console.WriteLine("\n\n\n********* Problem Ten **********");
+            var employeeUsers = _context.UserRoles
+                                        .Include(ur => ur.User)
+                                        .Where(ur => ur.RoleId == 2)
+                                        .Select(ur => ur.User)
+                                        .ToList();
 
+            var empShopCart = _context.ShoppingCarts
+                                      .Include(sc => sc.Product)
+                                      .Include(sc => sc.User.UserRoles)
+                                      .Select(sc => new { sc.User, sc.Product, sc.Quantity, sc.User.UserRoles })
+                                      .ToList();
+
+            foreach (var record in empShopCart)
+            {
+                if (employeeUsers.Contains(record.User))
+                {
+
+                    Console.WriteLine($"Email: {record.User.Email }     Product: {record.Product.Name}     $: {record.Product.Price}     Quantity: {record.Quantity}");
+                }
+            }
+            //var employeesShopCart = _context.ShoppingCarts.Include(u => u.User).Include(u => u.Product).Where(u => u.User.UserRoles.Contains(RoleId);
+            //foreach (ShoppingCart product in employeesShopCart)
+            //{
+            //Console.WriteLine($"{product.User.Email}'s cart contains:     {product.Product.Name}     Price: ${product.Product.Price}     Quantity: {product.Quantity}");
+            //}
         }
 
         // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
