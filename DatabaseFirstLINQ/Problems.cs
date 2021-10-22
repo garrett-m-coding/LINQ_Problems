@@ -23,10 +23,10 @@ namespace DatabaseFirstLINQ
             //ProblemSix();
             //ProblemSeven();
             //ProblemEight();
-            ProblemNine();
-            ProblemTen();
+            //ProblemNine();
+            //ProblemTen();
             //ProblemEleven();
-            //ProblemTwelve();
+            ProblemTwelve();
             //ProblemThirteen();
             //ProblemFourteen();
             //ProblemFifteen();
@@ -188,11 +188,6 @@ namespace DatabaseFirstLINQ
                     Console.WriteLine($"Email: {record.User.Email }     Product: {record.Product.Name}     $: {record.Product.Price}     Quantity: {record.Quantity}");
                 }
             }
-            //var employeesShopCart = _context.ShoppingCarts.Include(u => u.User).Include(u => u.Product).Where(u => u.User.UserRoles.Contains(RoleId);
-            //foreach (ShoppingCart product in employeesShopCart)
-            //{
-            //Console.WriteLine($"{product.User.Email}'s cart contains:     {product.Product.Name}     Price: ${product.Product.Price}     Quantity: {product.Quantity}");
-            //}
         }
 
         // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
@@ -201,6 +196,7 @@ namespace DatabaseFirstLINQ
 
         private void ProblemEleven()
         {
+            Console.WriteLine("\n\n\n********* Problem Eleven **********\n Created new user David");
             // Create a new User object and add that user to the Users table using LINQ.
             User newUser = new User()
             {
@@ -213,8 +209,16 @@ namespace DatabaseFirstLINQ
 
         private void ProblemTwelve()
         {
+            Console.WriteLine("\n\n\n********* Problem Twelve **********\n Created new Product Hat");
             // Create a new Product object and add that product to the Products table using LINQ.
-
+            Product newProduct = new Product()
+            {
+                Name = "New Era Brewers 2021",
+                Description = "Fitted baseball hat -Royal",
+                Price = 35
+            };
+            _context.Products.Add(newProduct);
+            _context.SaveChanges();
         }
 
         private void ProblemThirteen()
