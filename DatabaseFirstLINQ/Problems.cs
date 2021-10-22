@@ -30,8 +30,8 @@ namespace DatabaseFirstLINQ
             //ProblemThirteen();
             //ProblemFourteen();
             //ProblemFifteen();
-            ProblemSixteen();
-            //ProblemSeventeen();
+            //ProblemSixteen();
+            ProblemSeventeen();
             //ProblemEighteen();
             //ProblemNineteen();
             //ProblemTwenty();
@@ -278,6 +278,7 @@ namespace DatabaseFirstLINQ
             // Change the role of the user we created to "Employee"
             // HINT: You need to delete the existing role relationship and then create a new UserRole object and add it to the UserRoles table
             // See problem eighteen as an example of removing a role relationship
+            Console.WriteLine("\n\n\n********* Problem Seventeen **********\n Changed User David's role from customer to employee.");
             var userRole = _context.UserRoles.Where(ur => ur.User.Email == "mike@gmail.com").SingleOrDefault();
             _context.UserRoles.Remove(userRole);
             UserRole newUserRole = new UserRole()
